@@ -31,6 +31,7 @@ public class TaskStopwatchController {
     // TODO: reduce size of parameter list
     // TODO: read Spring Boot book on creating mappings
     // TODO: What should the return type be? How does the client know if what is returned is a success?
+    // TODO: Create bean for parameters
     @PostMapping(value = "/tasks")
     public HttpStatus addTask(String name, int timerHour, int timerMinute, int timerSecond, LocalDateTime startTime, long taskTypeId) {
         taskStopwatchService.addTask(name, timerHour, timerMinute, timerSecond, startTime, taskTypeId);
@@ -42,7 +43,8 @@ public class TaskStopwatchController {
     // TODO: reduce size of parameter list
     // TODO: read Spring Boot book on creating mappings
     // TODO: What should the return type be? How does the client know if what is returned is a success?
-    // TODO: Are there GUIDs in Java?
+    // TODO: Are there GUIDs in Java? There's UUID
+    // TODO: Create bean for parameters
     @PutMapping("/tasks")
     public HttpStatus updateTask(long taskId, String name, LocalDateTime startDate, int startHours, int startMinutes, int startSeconds, String startPeriod,
                            LocalDateTime endDate, int endHours, int endMinutes, int endSeconds, String endPeriod, long taskTypeId) {
