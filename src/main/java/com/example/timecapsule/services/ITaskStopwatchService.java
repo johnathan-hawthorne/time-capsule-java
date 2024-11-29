@@ -2,12 +2,12 @@ package com.example.timecapsule.services;
 
 import com.example.timecapsule.beans.Task;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.time.LocalDateTime;
 
 public interface ITaskStopwatchService {
-    public List<Task> getTasks(LocalDateTime selectedDate, long taskTypeId);
+    public List<Task> getTasks(LocalDate selectedDate, long taskTypeId);
 
     public void addTask(String name, int timerHour, int timerMinute, int timerSecond, LocalDateTime startTime, long taskTypeId);
 

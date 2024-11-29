@@ -4,6 +4,7 @@ import com.example.timecapsule.beans.Task;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class TaskStopwatchService implements ITaskStopwatchService{
     private List<Task> tasks = new ArrayList<>();
 
     @Override
-    public List<Task> getTasks(LocalDateTime selectedDate, long taskTypeId) {
+    public List<Task> getTasks(LocalDate selectedDate, long taskTypeId) {
         if (taskTypeId != 1) { // get specific task
             tasks = tasks.stream()
                     .filter(task -> task.taskTypeId == taskTypeId

@@ -6,7 +6,9 @@ import com.example.timecapsule.services.TaskStopwatchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 // TODO: need to figure out how the mappings, pathvariables, and request body work
@@ -20,9 +22,9 @@ public class TaskStopwatchController {
 
     // TODO: Are there GUIDs in Java?
     @GetMapping(value = "/tasks/{selectedDate}/{taskTypeId}")
-    public List<Task> getTasks(@PathVariable("selectedDate") LocalDateTime selectedDate,
+    public List<Task> getTasks(@PathVariable("selectedDate") String selectedDate,
                                @PathVariable("taskTypeId") long taskTypeId) {
-        return taskStopwatchService.getTasks(selectedDate, taskTypeId);
+        return taskStopwatchService.getTasks(LocalDate.parse(selectedDate, DateTimeFormatter.BASIC_ISO_DATE), taskTypeId);
     }
 
     // TODO: request body?
