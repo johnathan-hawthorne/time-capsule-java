@@ -1,0 +1,15 @@
+Get Mapping
+===========
+curl http://localhost:9191/tasks/1
+
+Post Mapping
+============
+curl -X POST -H "Content-Type:application/json" -d "{\"name\": \"something\", \"taskTypeId\": 1 }" http://localhost:9191/tasks
+
+Put Mapping
+===========
+curl -X PUT -H "Content-Type:application/json" -d "{\"taskId\": 1, \"name\": \"something else\", \"taskTypeId\": 1 }" http://localhost:9191/tasks
+
+Delete Mapping
+==============
+curl -X DELETE http://localhost:9191/tasks/1
