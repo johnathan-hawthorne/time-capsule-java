@@ -1,18 +1,19 @@
 package com.example.timecapsule.services;
 
 import com.example.timecapsule.beans.Task;
-import com.example.timecapsule.beans.TaskStopwatchDto;
-import jdk.jfr.Timespan;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// What's the difference between @Component and @Service, and when should each be used?
+// Both @Component and @Service are bean stereotypes. Not sure when one should be used over the other.
+@Service
 public class TaskStopwatchService implements ITaskStopwatchService{
-    List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
     @Override
     public List<Task> getTasks(LocalDateTime selectedDate, long taskTypeId) {
