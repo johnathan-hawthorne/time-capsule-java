@@ -34,7 +34,7 @@ public class TaskStopwatchController {
     @PostMapping(value = "/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public void addTask(@RequestBody AddTaskDetail addTaskDetail) {
-        taskStopwatchService.addTask(addTaskDetail.name, addTaskDetail.taskTypeId);
+        taskStopwatchService.addTask(addTaskDetail.name, addTaskDetail.taskTypeId, addTaskDetail.startDateTime, addTaskDetail.endDateTime);
     }
 
     // TODO: request body?

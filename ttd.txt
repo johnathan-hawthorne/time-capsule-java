@@ -1,0 +1,10 @@
+getTasks
+- selectedDate
+- taskTypeId
+
+addTask
+- name
+- taskTypeId
+- startTime
+- endTime
+- elapsedTime
