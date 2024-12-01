@@ -8,3 +8,10 @@ addTask
 - startTime
 - endTime
 - elapsedTime
+
+updateTask
+- name
+- taskTypeId
+- startTime
+- endTime
+- elapsedTime

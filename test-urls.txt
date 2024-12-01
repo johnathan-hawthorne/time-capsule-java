@@ -13,6 +13,7 @@ curl -X POST -H "Content-Type:application/json" -d "{\"name\": \"something\", \"
 Put Mapping
 ===========
 curl -X PUT -H "Content-Type:application/json" -d "{\"taskId\": 1, \"name\": \"something else\", \"taskTypeId\": 1 }" http://localhost:9191/tasks
+curl -X PUT -H "Content-Type:application/json" -d "{\"taskId\": 1, \"name\": \"something else\", \"taskTypeId\": 1, \"startDateTime\": \"2007-12-03T10:15:30\", \"endDateTime\": \"2007-12-03T15:25:23\" }" http://localhost:9191/tasks
 
 Delete Mapping
 ==============

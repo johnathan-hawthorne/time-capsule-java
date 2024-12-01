@@ -12,7 +12,7 @@ public interface ITaskStopwatchService {
 
     public void addTask(String name, long taskTypeId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
-    public void updateTask(long taskId, long taskTypeId, String name);
+    public void updateTask(long taskId, long taskTypeId, String name, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
     public void deleteTask(long taskId);
 }

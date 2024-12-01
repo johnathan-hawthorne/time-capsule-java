@@ -4,9 +4,7 @@ import com.example.timecapsule.beans.Task;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,10 +36,13 @@ public class TaskStopwatchService implements ITaskStopwatchService{
     }
 
     @Override
-    public void updateTask(long taskId, long taskTypeId, String name) {
+    public void updateTask(long taskId, long taskTypeId, String name, LocalDateTime startDateTime, LocalDateTime endDateTime) {
         Task task = tasks.stream().filter(t -> t.id == taskId).findFirst().orElse(null);
         task.name = name;
         task.taskTypeId = taskTypeId;
+        task.startDateTime = startDateTime;
+        task.endDateTime = endDateTime;
+        task.elapsedTime = Duration.between(task.startDateTime, task.endDateTime);
     }
 
     @Override

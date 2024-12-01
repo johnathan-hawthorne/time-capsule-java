@@ -46,7 +46,8 @@ public class TaskStopwatchController {
     @PutMapping("/tasks")
     @ResponseStatus(HttpStatus.OK)
     public void updateTask(@RequestBody UpdateTaskDetail updateTaskDetail) {
-        taskStopwatchService.updateTask(updateTaskDetail.taskId, updateTaskDetail.taskTypeId, updateTaskDetail.name);
+        taskStopwatchService.updateTask(updateTaskDetail.taskId, updateTaskDetail.taskTypeId, updateTaskDetail.name, updateTaskDetail.startDateTime,
+                updateTaskDetail.endDateTime);
     }
 
     // TODO: What should the return type be? How does the client know if what is returned is a success?
