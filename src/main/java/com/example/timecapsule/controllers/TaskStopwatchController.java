@@ -20,6 +20,7 @@ public class TaskStopwatchController {
     }
 
     // TODO: Are there GUIDs in Java?
+    @CrossOrigin
     @GetMapping(value = "/tasks/{taskTypeId}")
     @ResponseStatus(HttpStatus.OK)
     public List<Task> getTasks(@PathVariable("taskTypeId") long taskTypeId) {
@@ -31,6 +32,7 @@ public class TaskStopwatchController {
     // TODO: read Spring Boot book on creating mappings
     // TODO: What should the return type be? How does the client know if what is returned is a success?
     // TODO: Create bean for parameters
+    @CrossOrigin
     @PostMapping(value = "/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public void addTask(@RequestBody AddTaskDetail addTaskDetail) {
