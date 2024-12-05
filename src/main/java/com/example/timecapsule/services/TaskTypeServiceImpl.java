@@ -10,11 +10,13 @@ import java.util.List;
 public class TaskTypeServiceImpl implements TaskTypeService {
     private List<TaskType> taskTypes;
 
-    public TaskTypeServiceImpl() { taskTypes = new ArrayList<>(); }
+    public TaskTypeServiceImpl() {
+        taskTypes = new ArrayList<>();
+        taskTypes.add(new TaskType(1, "Test Task Type"));
+    }
 
     @Override
     public List<TaskType> getTaskTypes() {
-        taskTypes.add(new TaskType(1, "Test Task Type"));
         return taskTypes;
     }
 }
