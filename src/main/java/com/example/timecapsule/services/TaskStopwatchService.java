@@ -1,52 +1,16 @@
 package com.example.timecapsule.services;
 
 import com.example.timecapsule.beans.Task;
-import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
-// What's the difference between @Component and @Service, and when should each be used?
-// Both @Component and @Service are bean stereotypes. Not sure when one should be used over the other.
-@Service
-public class TaskStopwatchService implements ITaskStopwatchService{
-    private List<Task> tasks;
+public interface TaskStopwatchService {
+    public List<Task> getTasks(long taskTypeId);
 
-    public TaskStopwatchService() {
-        tasks  = new ArrayList<>();
-    }
-    @Override
-    public List<Task> getTasks(long taskTypeId) {
-        return tasks.stream().filter(t -> t.taskTypeId == taskTypeId).collect(Collectors.toList());
-    }
+    public void addTask(String name, long taskTypeId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
-    @Override
-    public void addTask(String name, long taskTypeId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        Task task = new Task();
-        task.id = tasks.size() + 1;
-        task.name = name;
-        task.taskTypeId = taskTypeId;
-        task.startDateTime = startDateTime;
-        task.endDateTime = endDateTime;
-        task.elapsedTime = Duration.between(task.startDateTime, task.endDateTime);
-        tasks.add(task);
-    }
+    public void updateTask(long taskId, long taskTypeId, String name, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
-    @Override
-    public void updateTask(long taskId, long taskTypeId, String name, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        Task task = tasks.stream().filter(t -> t.id == taskId).findFirst().orElse(null);
-        task.name = name;
-        task.taskTypeId = taskTypeId;
-        task.startDateTime = startDateTime;
-        task.endDateTime = endDateTime;
-        task.elapsedTime = Duration.between(task.startDateTime, task.endDateTime);
-    }
-
-    @Override
-    public void deleteTask(long taskId) {
-        tasks.removeIf(t -> t.id == taskId);
-    }
+    public void deleteTask(long taskId);
 }

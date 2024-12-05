@@ -15,3 +15,21 @@ updateTask
 - startTime
 - endTime
 - elapsedTime
+
+// TODO: need to figure out how the mappings, pathvariables, and request body work
+// TODO: Are there GUIDs in Java?
+// TODO: request body?
+// TODO: reduce size of parameter list
+// TODO: read Spring Boot book on creating mappings
+// TODO: What should the return type be? How does the client know if what is returned is a success?
+// TODO: Create bean for parameters
+// TODO: request body?
+// TODO: reduce size of parameter list
+// TODO: read Spring Boot book on creating mappings
+// TODO: What should the return type be? How does the client know if what is returned is a success?
+// TODO: Are there GUIDs in Java? There's UUID
+// TODO: Create bean for parameters
+// TODO: What should the return type be? How does the client know if what is returned is a success?
+// TODO: Are there GUIDs in Java?
+
+// TODO: create type types from UI
