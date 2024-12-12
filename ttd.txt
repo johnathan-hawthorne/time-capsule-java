@@ -29,3 +29,5 @@ getTaskTypes
 // List; Use ResponseStatus
 // TODO: Are there GUIDs in Java? UUID
 // TODO: create task types from UI
+// TODO: Where do DTOs go? Are DTOs considered to be beans?
+// TODO: How do you format time in Java? How do you format duration in Java?
