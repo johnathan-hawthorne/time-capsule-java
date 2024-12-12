@@ -1,6 +1,7 @@
 package com.example.timecapsule.services;
 
 import com.example.timecapsule.beans.Task;
+import com.example.timecapsule.beans.TaskDto;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -19,8 +20,8 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
         tasks  = new ArrayList<>();
     }
     @Override
-    public List<Task> getTasks(long taskTypeId) {
-        return tasks.stream().filter(t -> t.taskTypeId == taskTypeId).collect(Collectors.toList());
+    public List<TaskDto> getTasks(long taskTypeId) {
+        return tasks.stream().filter(t -> t.taskTypeId == taskTypeId).map(TaskDto::new).collect(Collectors.toList());
     }
 
     @Override

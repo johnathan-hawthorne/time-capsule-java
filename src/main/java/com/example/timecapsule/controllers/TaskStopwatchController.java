@@ -2,7 +2,7 @@ package com.example.timecapsule.controllers;
 
 
 import com.example.timecapsule.beans.AddTaskDetail;
-import com.example.timecapsule.beans.Task;
+import com.example.timecapsule.beans.TaskDto;
 import com.example.timecapsule.beans.UpdateTaskDetail;
 import com.example.timecapsule.services.TaskStopwatchServiceImpl;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class TaskStopwatchController {
     @CrossOrigin
     @GetMapping(value = "/tasks/{taskTypeId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Task> getTasks(@PathVariable("taskTypeId") long taskTypeId) {
+    public List<TaskDto> getTasks(@PathVariable("taskTypeId") long taskTypeId) {
         return taskStopwatchService.getTasks(taskTypeId);
     }
 
