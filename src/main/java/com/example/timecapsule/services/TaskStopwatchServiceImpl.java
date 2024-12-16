@@ -28,6 +28,7 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
         task.id = tasks.size() + 1;
         task.name = name;
         task.taskTypeId = taskTypeId;
+        // TODO: temporary fix for time zone issue
         task.startDateTime = startDateTime.minusHours(6);
         task.endDateTime = endDateTime.minusHours(6);
         task.elapsedTime = Duration.between(task.startDateTime, task.endDateTime);

@@ -19,7 +19,14 @@ public class TaskDto {
         this.startDateTime = task.startDateTime.format(formatter);
         this.endDateTime = task.endDateTime.format(formatter);
         // TODO: time formatting needs work
-        this.elapsedTime = String.format("0%d:0%d:0%d", task.elapsedTime.toHours(), task.elapsedTime.toMinutes(),
-                task.elapsedTime.toSeconds());
+        String hours = task.elapsedTime.toHours() < 10 ? "0" + task.elapsedTime.toHours() : "" + task.elapsedTime.toHours();
+        String mins = task.elapsedTime.toMinutes() < 10 ? "0" + task.elapsedTime.toMinutes() : "" + task.elapsedTime.toMinutes();
+        String seconds;
+        if (task.elapsedTime.toSeconds() > 60) {
+            seconds = "00";
+        } else {
+            seconds = task.elapsedTime.toSeconds() < 10 ? "0" + task.elapsedTime.toSeconds() : "" + task.elapsedTime.toSeconds();
+        }
+        this.elapsedTime = String.format("%s:%s:%s", hours, mins, seconds);
     }
 }

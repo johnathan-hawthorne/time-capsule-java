@@ -33,6 +33,7 @@ public class TaskStopwatchController {
         taskStopwatchService.addTask(addTaskDetail.name, addTaskDetail.taskTypeId, addTaskDetail.startDateTime, addTaskDetail.endDateTime);
     }
 
+    @CrossOrigin
     @PutMapping("/tasks")
     @ResponseStatus(HttpStatus.OK)
     public void updateTask(@RequestBody UpdateTaskDetail updateTaskDetail) {
@@ -40,6 +41,7 @@ public class TaskStopwatchController {
                 updateTaskDetail.endDateTime);
     }
 
+    @CrossOrigin
     @DeleteMapping("/tasks/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteTask(@PathVariable("id") long id) {
