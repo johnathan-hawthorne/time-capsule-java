@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Component
 public class Task {
     public long id;
-    public Long taskTypeId;
+    public long taskTypeId;
     public String name;
     public LocalDateTime startDateTime;
     public LocalDateTime endDateTime;

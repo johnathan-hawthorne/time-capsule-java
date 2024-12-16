@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// What's the difference between @Component and @Service, and when should each be used?
-// Both @Component and @Service are bean stereotypes. Not sure when one should be used over the other.
 @Service
 public class TaskStopwatchServiceImpl implements TaskStopwatchService {
     private List<Task> tasks;
@@ -30,8 +28,8 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
         task.id = tasks.size() + 1;
         task.name = name;
         task.taskTypeId = taskTypeId;
-        task.startDateTime = startDateTime;
-        task.endDateTime = endDateTime;
+        task.startDateTime = startDateTime.minusHours(6);
+        task.endDateTime = endDateTime.minusHours(6);
         task.elapsedTime = Duration.between(task.startDateTime, task.endDateTime);
         tasks.add(task);
     }
@@ -41,8 +39,9 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
         Task task = tasks.stream().filter(t -> t.id == taskId).findFirst().orElse(null);
         task.name = name;
         task.taskTypeId = taskTypeId;
-        task.startDateTime = startDateTime;
-        task.endDateTime = endDateTime;
+        // TODO: temporary fix for time zone issue
+        task.startDateTime = startDateTime.minusHours(6);
+        task.endDateTime = endDateTime.minusHours(6);
         task.elapsedTime = Duration.between(task.startDateTime, task.endDateTime);
     }
 
