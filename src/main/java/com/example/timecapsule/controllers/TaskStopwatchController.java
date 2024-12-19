@@ -8,6 +8,8 @@ import com.example.timecapsule.services.TaskStopwatchServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -20,25 +22,26 @@ public class TaskStopwatchController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/tasks/{taskTypeId}")
+    @GetMapping(value = "/tasks/{taskTypeId}/{selectedDate}")
     @ResponseStatus(HttpStatus.OK)
-    public List<TaskDto> getTasks(@PathVariable("taskTypeId") long taskTypeId) {
-        return taskStopwatchService.getTasks(taskTypeId);
+    public List<TaskDto> getTasks(@PathVariable("taskTypeId") long taskTypeId, @PathVariable("selectedDate") LocalDate selectedDate) {
+        return taskStopwatchService.getTasks(taskTypeId, selectedDate);
     }
 
     @CrossOrigin
     @PostMapping(value = "/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public void addTask(@RequestBody AddTaskDetail addTaskDetail) {
-        taskStopwatchService.addTask(addTaskDetail.name, addTaskDetail.taskTypeId, addTaskDetail.startDateTime, addTaskDetail.endDateTime);
+        taskStopwatchService.addTask(addTaskDetail.name, addTaskDetail.taskTypeId, addTaskDetail.startDateTime,
+                addTaskDetail.endDateTime);
     }
 
     @CrossOrigin
     @PutMapping("/tasks")
     @ResponseStatus(HttpStatus.OK)
     public void updateTask(@RequestBody UpdateTaskDetail updateTaskDetail) {
-        taskStopwatchService.updateTask(updateTaskDetail.taskId, updateTaskDetail.taskTypeId, updateTaskDetail.name, updateTaskDetail.startDateTime,
-                updateTaskDetail.endDateTime);
+        taskStopwatchService.updateTask(updateTaskDetail.taskId, updateTaskDetail.taskTypeId, updateTaskDetail.name,
+                updateTaskDetail.startDateTime, updateTaskDetail.endDateTime);
     }
 
     @CrossOrigin

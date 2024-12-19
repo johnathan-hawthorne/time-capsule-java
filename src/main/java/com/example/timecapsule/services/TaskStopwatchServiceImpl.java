@@ -5,6 +5,7 @@ import com.example.timecapsule.beans.TaskDto;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,8 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
         tasks  = new ArrayList<>();
     }
     @Override
-    public List<TaskDto> getTasks(long taskTypeId) {
-        return tasks.stream().filter(t -> t.taskTypeId == taskTypeId).map(TaskDto::new).collect(Collectors.toList());
+    public List<TaskDto> getTasks(long taskTypeId, LocalDate selectedDate) {
+        return tasks.stream().filter(t -> t.taskTypeId == taskTypeId && t.startDateTime.toLocalDate().isEqual(selectedDate)).map(TaskDto::new).collect(Collectors.toList());
     }
 
     @Override
@@ -36,7 +37,8 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
     }
 
     @Override
-    public void updateTask(long taskId, long taskTypeId, String name, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+    public void updateTask(long taskId, long taskTypeId, String name, LocalDateTime startDateTime,
+                           LocalDateTime endDateTime) {
         Task task = tasks.stream().filter(t -> t.id == taskId).findFirst().orElse(null);
         task.name = name;
         task.taskTypeId = taskTypeId;
