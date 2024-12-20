@@ -20,9 +20,14 @@ public class TaskDto {
         this.endDateTime = task.endDateTime.format(formatter);
         // TODO: time formatting needs work
         String hours = task.elapsedTime.toHours() < 10 ? "0" + task.elapsedTime.toHours() : "" + task.elapsedTime.toHours();
-        String mins = task.elapsedTime.toMinutes() < 10 ? "0" + task.elapsedTime.toMinutes() : "" + task.elapsedTime.toMinutes();
+        String mins;
+        if (task.elapsedTime.toMinutes() >= 60) {
+            mins = "00";
+        } else {
+            mins = task.elapsedTime.toMinutes() < 10 ? "0" + task.elapsedTime.toMinutes() : "" + task.elapsedTime.toMinutes();
+        }
         String seconds;
-        if (task.elapsedTime.toSeconds() > 60) {
+        if (task.elapsedTime.toSeconds() >= 60) {
             seconds = "00";
         } else {
             seconds = task.elapsedTime.toSeconds() < 10 ? "0" + task.elapsedTime.toSeconds() : "" + task.elapsedTime.toSeconds();
