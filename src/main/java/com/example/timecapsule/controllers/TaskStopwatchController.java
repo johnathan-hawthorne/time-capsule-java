@@ -22,9 +22,9 @@ public class TaskStopwatchController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/tasks/{taskTypeId}/{selectedDate}")
+    @GetMapping(value = "/tasks")
     @ResponseStatus(HttpStatus.OK)
-    public List<TaskDto> getTasks(@PathVariable("taskTypeId") long taskTypeId, @PathVariable("selectedDate") LocalDate selectedDate) {
+    public List<TaskDto> getTasks(long taskTypeId, LocalDate selectedDate) {
         return taskStopwatchService.getTasks(taskTypeId, selectedDate);
     }
 

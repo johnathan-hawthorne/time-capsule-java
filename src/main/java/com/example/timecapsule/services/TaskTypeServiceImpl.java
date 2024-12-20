@@ -12,7 +12,9 @@ public class TaskTypeServiceImpl implements TaskTypeService {
 
     public TaskTypeServiceImpl() {
         taskTypes = new ArrayList<>();
-        taskTypes.add(new TaskType(1, "Test Task Type"));
+        taskTypes.add(new TaskType(1, "All"));
+        taskTypes.add(new TaskType(2, "Work"));
+        taskTypes.add(new TaskType(3, "Personal"));
     }
 
     @Override

@@ -20,6 +20,9 @@ public class TaskStopwatchServiceImpl implements TaskStopwatchService {
     }
     @Override
     public List<TaskDto> getTasks(long taskTypeId, LocalDate selectedDate) {
+        if (taskTypeId == 1) {
+            return tasks.stream().filter(t -> t.startDateTime.toLocalDate().isEqual(selectedDate)).map(TaskDto::new).collect(Collectors.toList());
+        }
         return tasks.stream().filter(t -> t.taskTypeId == taskTypeId && t.startDateTime.toLocalDate().isEqual(selectedDate)).map(TaskDto::new).collect(Collectors.toList());
     }
 
